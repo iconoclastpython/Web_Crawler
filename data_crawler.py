@@ -1,4 +1,15 @@
 #!/usr/bin/env python
+'''
+Basic web crawler to grasp article tiles and post timestamps
+
+Modify Strategy:
+1. Multi-Process crawler;
+2. User-Agent plan;
+3. Store data in MongoDB;
+4. Login with authentication;
+5. Reference...
+'''
+
 from bs4 import BeautifulSoup
 import requests
 
