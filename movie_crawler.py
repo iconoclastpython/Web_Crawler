@@ -15,8 +15,8 @@ def download_page(url):
 def parse_html(html):
   movie_list = []
   soup = BeautifulSoup(html)
-  movie_list = soup.find('ol', attrs={'class': 'grid_view'})
-  for movie in movie_list.find_all('li'):
+  movies = soup.find('ol', attrs={'class': 'grid_view'})
+  for movie in movies.find_all('li'):
     detail = movie.find('div', attrs={'class': 'hd'})
     movie_name = detail.find('span', attrs={'class': 'title'}).getText()
     movie_list.append(movie_name)
