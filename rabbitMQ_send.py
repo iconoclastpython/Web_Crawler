@@ -1,12 +1,19 @@
 #!/usr/bin/env python
 import pika
+import sys
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(
                'localhost'))
 channel = connection.channel()
-channel.queue_declare(queue='hello')
+channel.queue_declare(queue='task_queue')
+
+message = ' '.join(sys.argv[1:]) or 'Hello Ico!'
 channel.basic_publish(exchange='',
-                      routing_key='hello',
-                      body='Hello World!')
-print("Ico: [x] Sent 'Hello World!'")
+                      routing_key='task_queue',
+                      body=message,
+                      properties=pika.BasicProperties(
+                          delivery_mode=2,
+                      ))
+
+print("Ico: [x] Sent %r" % message)
 connection.close()

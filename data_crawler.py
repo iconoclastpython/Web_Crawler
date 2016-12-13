@@ -10,7 +10,8 @@ Modify Strategy:
 4. Store data in MongoDB;
 5. Login with authentication;
 6. Anti-Crawler procedures;
-7. Reference...
+7. Docker;
+8. Reference...
 
 Packages:
 *** brew ***
