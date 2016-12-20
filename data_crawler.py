@@ -32,10 +32,9 @@ from multiprocessing import Process
 
 import time
 
-start_time = time.time()
+
 DOWNLOAD_URL = 'https://techcrunch.com'
 urls = [DOWNLOAD_URL]
-
 
 def download_page(url):
   # 1. Modify U-A more powerful here 
@@ -90,6 +89,7 @@ def main():
   print "url list: ", urls
 
   # Multi-Process crawler
+  start_time = time.time()
   pool = Pool(10)
   pool.map(parse_html, urls)
   pool.close()
@@ -98,7 +98,7 @@ def main():
   print time.time() - start_time
 
   # Here disorder print should be save with keys in database
-  # Better to save url or html content in a queue, but avoid OOM
+  # Better to save url or html content in an advanced queue, but avoid OOM
 
 if __name__ =='__main__':
   main()
